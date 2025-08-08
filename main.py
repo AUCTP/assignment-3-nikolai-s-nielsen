@@ -51,22 +51,19 @@ def simulate_optimal_inventory():  # a function which takes user input to calcul
         choice = input('Press 1 to simulate optimal inventory level for one month\nPress 2 to terminate\n>')
         if choice == "1":    
             y = int(input('Choose an average daily demand (e.g. 20): '))
-            serviceLevel = float(input('Choose a service level between 0 and 1.00 (e.g. 0.95): '))
-            x = 1000  # the function is set to run the average demand in 30 days a 1000 times 
+            serviceLevel = float(input('Choose a service level between 0 and 100 (e.g. 95): '))
+            x = 100000  # the function is set to run the average demand in 30 days a 1000 times 
             
             demandTotal = []
 
             for number in range(x):    
                 n = 30
                 demandToday = simulate_demand2(n, y)
-                demandTotal.extend(demandToday)
+                demandTotal.append(sum(demandToday))
 
             print('\nSummary of statistics:')
-            demandSum = round((sum(demandTotal) / x),0)
+            demandSum = round(np.mean(demandTotal),0)
             print(f'\tThe total demand is: {demandSum}')
-
-            avg = round(np.average(demandTotal),2)
-            print(f'\tThe average demand is: {avg}')
 
             std = round(np.std(demandTotal),2)
             print(f'\tThe standard deviation of demand is: {std}')
@@ -77,7 +74,7 @@ def simulate_optimal_inventory():  # a function which takes user input to calcul
             percentileHigh = round(np.percentile(demandTotal, 95),2)
             print(f'\tThe 95th percentile of demand is: {percentileHigh}')
 
-            inventoryOptimal = round((demandSum * serviceLevel),0)
+            inventoryOptimal = round(np.percentile(demandTotal, serviceLevel))
             print(f'\nThe optimal inventory level with an average daily demand of {y} and service level of {serviceLevel} is: {inventoryOptimal}\n')
         else:
             print("Goodbye!")
