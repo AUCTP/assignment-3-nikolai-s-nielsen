@@ -85,4 +85,4 @@ simulate_optimal_inventory()
 
 # Interpretation
     # The function describes that by having an average daily demand of 20 and a service level of 95%
-    # the total demand in 30 days will be 600 items and an optimal inventory level of 570 items
+    # the total demand in 30 days will be 600 items and an optimal inventory level of 641 items
