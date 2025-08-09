@@ -4,18 +4,18 @@ def validate_email(email):
     reg = re.compile("[a-z][a-z]+(@)(hr|it|fin|mkt|ops)\.(company)\.(com)")
     m = reg.match(email)
     if m:
-        return True
+        return "The email is valid: True"
     else:
-        return False
+        return "The email is valid: False"
 
 
 def get_department(email):
-    reg2 = re.compile("(hr|it|fin|mkt|ops)")
+    reg2 = re.compile("[a-z][a-z]+(@)(hr|it|fin|mkt|ops)\.(company)\.(com)")
     m = reg2.search(email)
     if m:
-        return m.group()
+        return f'Department: {m.group(2)}'  # returns group 2 in reg2 e.g. the department name (here there are 4 groups defined by () in reg2)
     else:
-        return None
+        return "Department: None"
 
 
 def categorize_emails(email_list):
@@ -29,15 +29,8 @@ def categorize_emails(email_list):
             emails[department].append(email)
     return emails
 
-email_list = ["jdoe@hr.company.com", "tdoe@fin.company.com"]
 email = "jdoe@hr.company.com"
+email_list = ["jdoe@hr.company.com", "tdoe@fin.company.com", "rdoe@mkt.company.com", "sdoe@hr.company.com"]
 print(validate_email(email))
 print(get_department(email))
-print(categorize_emails(email_list))
-
-
-
-# reg = re.compile("(https?://)?www\.[a-z.]+-?[a-z.]+\.(de|com|org|net|edu|co\.uk)(/[a-z]+)*")
-
-# m = reg.match("www.google.com")
-# print(m)
+print(f'The dictionary of emails: {categorize_emails(email_list)}')

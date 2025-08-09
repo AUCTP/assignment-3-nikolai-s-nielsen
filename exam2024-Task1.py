@@ -3,9 +3,9 @@
 data = {
     "Mike": {
         "salesTarget": 130,
-        "customerSatisfaction": 10,
-        "attendance": 29,
-        "peerFeedback": 10
+        "customerSatisfaction": 5,
+        "attendance": 23,
+        "peerFeedback": 3
     }
     }
 
@@ -14,9 +14,9 @@ def evaluate_performance(data):
     for employee in data:
         if data[employee]['salesTarget'] > 120:
             data2.append("excellent")
-        elif 100 < data[employee]['salesTarget'] <= 120:
+        elif 100 <= data[employee]['salesTarget'] <= 120:
             data2.append('good')
-        elif 80 <= data[employee]['salesTarget'] <= 100:
+        elif 80 <= data[employee]['salesTarget'] < 100:
             data2.append('average')
         elif data[employee]['salesTarget'] < 80:
             data2.append('poor')

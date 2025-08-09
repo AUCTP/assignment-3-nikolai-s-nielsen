@@ -1,23 +1,53 @@
 import random
 import numpy as np
 
-def optimal_production(n, y):  # a function which simulates the demand of the product in 30 days
+## With cost = $4
+def optimal_production(quan):  # a function which simulates the demand of the product in 30 days
+    y = 800
     demands = []
-    for day in range(n):
+    for day in range(s):
         demand = np.random.poisson(y)  # user input decides the average daily demand (refers to line 49)
-        demands.append(demand)
+        if demand <= quan:
+            win = (demand * 15) - (quan * 4)
+            demands.append(win)
+        else:
+            loss = (quan * 15) - (quan * 4) - ((demand - quan) * 10)
+            demands.append(loss)
 
-    return demands
+    return np.mean(demands)
+
+s = 10000
+p = range(400, 1201)
+avgProfits = [optimal_production(quan) for quan in p]
+
+optimal = max(avgProfits)
+optimal_quan = p[np.argmax(avgProfits)]
+
+print(f"Optimal production with cost $4: {optimal_quan} units")
+print(f"Average profit: ${optimal:,.2f}\n")
 
 
-n = 100000
-y = 800
-sum = sum(optimal_production(n, y)) / n
-revenue = sum * 15
-cost = sum * 4
-profit = revenue - cost
+## With cost = $5
+def optimal_production(quan):  # a function which simulates the demand of the product in 30 days
+    y = 800
+    demands = []
+    for day in range(s):
+        demand = np.random.poisson(y)  # user input decides the average daily demand (refers to line 49)
+        if demand <= quan:
+            win = (demand * 15) - (quan * 5)
+            demands.append(win)
+        else:
+            loss = (quan * 15) - (quan * 5) - ((demand - quan) * 10)
+            demands.append(loss)
 
-print(round(revenue))
-print(round(cost))
-print(round(profit))
-print(round(sum))
+    return np.mean(demands)
+
+s = 10000
+p = range(400, 1201)
+avgProfits = [optimal_production(quan) for quan in p]
+
+optimal = max(avgProfits)
+optimal_quan = p[np.argmax(avgProfits)]
+
+print(f"Optimal production with cost $5: {optimal_quan} units")
+print(f"Average profit: ${optimal:,.2f}")
