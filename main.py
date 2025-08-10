@@ -51,8 +51,8 @@ def simulate_optimal_inventory():  # a function which takes user input to calcul
         choice = input('Press 1 to simulate optimal inventory level for one month\nPress 2 to terminate\n>')
         if choice == "1":    
             y = int(input('Choose an average daily demand (e.g. 20): '))
-            serviceLevel = float(input('Choose a service level between 0 and 100 (e.g. 95): '))
-            x = 100000  # the function is set to run the average demand in 30 days a 1000 times 
+            serviceLevel = int(input('Choose a service level between 0 and 100 (e.g. 95): '))
+            x = 1000  # the function is set to run the average demand in 30 days a 1000 times 
             
             demandTotal = []
 

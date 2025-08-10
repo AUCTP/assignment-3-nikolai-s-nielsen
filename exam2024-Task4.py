@@ -16,7 +16,7 @@ def optimal_production(quan):  # a function which simulates the demand of the pr
 
     return np.mean(demands)
 
-s = 10000
+s = 1000
 p = range(400, 1201)
 avgProfits = [optimal_production(quan) for quan in p]
 
@@ -42,7 +42,7 @@ def optimal_production(quan):  # a function which simulates the demand of the pr
 
     return np.mean(demands)
 
-s = 10000
+s = 1000
 p = range(400, 1201)
 avgProfits = [optimal_production(quan) for quan in p]
 
