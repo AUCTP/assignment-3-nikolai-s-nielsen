@@ -7,7 +7,7 @@ data = {
         "attendance": 23,
         "peerFeedback": 3
     }
-    }
+}
 
 def evaluate_performance(data):
     data2 = []
@@ -91,6 +91,6 @@ def calculate_bonus(data3):
             return number * 2
 
 bonusYear = calculate_bonus(data3)
-print(f'Annual bonus is {bonusYear}$')
+print(f'Annual bonus is ${bonusYear}')
 
 
