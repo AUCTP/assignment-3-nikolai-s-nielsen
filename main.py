@@ -53,11 +53,12 @@ def simulate_optimal_inventory():  # a function which takes user input to calcul
             y = int(input('Choose an average daily demand (e.g. 20): '))
             serviceLevel = int(input('Choose a service level between 0 and 100 (e.g. 95): '))
             x = 1000  # the function is set to run the average demand in 30 days a 1000 times 
-            
+            n = 30
+            np.random.seed(42)
+
             demandTotal = []
 
             for number in range(x):    
-                n = 30
                 demandToday = simulate_demand2(n, y)
                 demandTotal.append(sum(demandToday))
 
